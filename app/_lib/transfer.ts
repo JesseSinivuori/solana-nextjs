@@ -37,6 +37,13 @@ export const transfer = async ({
       "confirmed"
     );
 
+    await airdropIfRequired(
+      connection,
+      toPubkey,
+      1 * LAMPORTS_PER_SOL,
+      0.5 * LAMPORTS_PER_SOL
+    );
+
     const transaction = new Transaction();
 
     const sendSolInstruction = SystemProgram.transfer({
